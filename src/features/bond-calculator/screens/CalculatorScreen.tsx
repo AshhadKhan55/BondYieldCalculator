@@ -102,20 +102,20 @@ export const CalculatorScreen = () => {
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <View style={{ minWidth: 700 }}>
                   <View style={styles.tableHeader}>
-                    <Text style={[styles.colObj, styles.flex1]}>Period</Text>
-                    <Text style={[styles.colObj, styles.flex2]}>Payment Date</Text>
-                    <Text style={[styles.colObj, styles.flex2]}>Coupon Payment</Text>
-                    <Text style={[styles.colObj, { flex: 2.5 }]}>Cumulative Interest</Text>
-                    <Text style={[styles.colObj, { flex: 2.5 }]}>Remaining Principal</Text>
+                    <Text style={[styles.colObj, { width: 80, textAlign: 'center' }]}>Period</Text>
+                    <Text style={[styles.colObj, { width: 120, textAlign: 'left' }]}>Payment Date</Text>
+                    <Text style={[styles.colObj, { width: 150, textAlign: 'right' }]}>Coupon Payment</Text>
+                    <Text style={[styles.colObj, { width: 175, textAlign: 'right' }]}>Cumulative Interest</Text>
+                    <Text style={[styles.colObj, { width: 175, textAlign: 'right' }]}>Remaining Principal</Text>
                   </View>
                   <View style={styles.divider} />
                   {results.cashFlowSchedule.map((row, idx) => (
                     <View key={idx.toString()} style={styles.tableRow}>
-                      <Text style={[styles.tableCell, styles.flex1]}>{row.period}</Text>
-                      <Text style={[styles.tableCell, styles.flex2]}>{row.paymentDate}</Text>
-                      <Text style={[styles.tableCell, styles.flex2]}>${row.couponPayment.toFixed(2)}</Text>
-                      <Text style={[styles.tableCell, { flex: 2.5 }]}>${row.cumulativeInterest.toFixed(2)}</Text>
-                      <Text style={[styles.tableCell, { flex: 2.5 }]}>${row.remainingPrincipal.toFixed(2)}</Text>
+                      <Text style={[styles.tableCell, { width: 80, textAlign: 'center' }]}>{row.period}</Text>
+                      <Text style={[styles.tableCell, { width: 120, textAlign: 'left' }]}>{row.paymentDate}</Text>
+                      <Text style={[styles.tableCell, { width: 150, textAlign: 'right' }]}>${row.couponPayment.toFixed(2)}</Text>
+                      <Text style={[styles.tableCell, { width: 175, textAlign: 'right' }]}>${row.cumulativeInterest.toFixed(2)}</Text>
+                      <Text style={[styles.tableCell, { width: 175, textAlign: 'right' }]}>${row.remainingPrincipal.toFixed(2)}</Text>
                     </View>
                   ))}
                 </View>
