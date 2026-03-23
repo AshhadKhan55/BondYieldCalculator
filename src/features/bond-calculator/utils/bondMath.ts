@@ -6,7 +6,7 @@ export const calculateBondMetrics = (inputs: BondInputs): BondOutputs => {
   const annualCouponPayment = faceValue * (annualCouponRate / 100);
   const currentYield = (annualCouponPayment / marketPrice) * 100;
 
-  const isPar = marketPrice === faceValue;
+  const isPar = Math.abs(marketPrice - faceValue) < 0.0001;
   const parityIndicator = isPar ? 'Par' : marketPrice > faceValue ? 'Premium' : 'Discount';
 
   const periodsPerYear = frequency === 'semi-annual' ? 2 : 1;
@@ -23,7 +23,7 @@ export const calculateBondMetrics = (inputs: BondInputs): BondOutputs => {
   // For semi annual, C -> payment per period, n -> total periods. Result gets multiplied by periodsPerYear
   const yieldToMaturityApprox =
     ((paymentPerPeriod + (faceValue - marketPrice) / totalPeriods) /
-    ((faceValue + marketPrice) / 2)) * periodsPerYear * 100;
+      ((faceValue + marketPrice) / 2)) * periodsPerYear * 100;
 
   let cumulativeInterest = 0;
   const cashFlowSchedule: CashFlowRow[] = [];
